@@ -23,7 +23,8 @@
   "dependencies": {
     "ejs": "^2.3.1",
     "express": "^4.13.0",
-    "pdc": "^0.2.2"
+    "pdc": "^0.2.2",
+    "docx4js": "^3.1.10"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
