@@ -52,8 +52,15 @@
         <div class="col-lg-6">
           <h4>Conversion API</h4>
           <p><strong>pandoc-as-a-service</strong> has a simple to use HTTP API.</p>
-          <p>POST a data to <code>http://pandoc-as-a-service.com/:format</code></p>
-          <pre>curl -H "Content-Type: text/{{inputFormat}}" -X POST -d "%DATA%" http://pandoc-as-a-service.com/{{outputFormat}}</pre>
+          <p>POST a data to <code>http://pandoc-as-a-service.com/api/upload/:format</code></p>
+          <p>POST a JSON to <code>http://pandoc-as-a-service.com/api/convert</code></p>
+          <p>Payload <code>{
+            "content":"<BASE 64 ENCODED CONTENT>",	
+            "inputFormat":"docx|INPUT FORMAT",
+            "outputFormat":"pdf| OUTPUT FORMAT"
+          }
+          </code></p>
+          <pre>curl -H "Content-Type: text/{{inputFormat}}" -X POST -d "%DATA%" http://pandoc-as-a-service.com/api/upload/{{outputFormat}}</pre>
           
           <hr/>
           

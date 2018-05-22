@@ -74,7 +74,7 @@ myApp.controller('AppCtrl', function($scope, $http, FormatsService) {
   $scope.convert = function (inputFormat, outputFormat, data) {
     var request = {
       method: 'POST',
-      url: '/' + outputFormat,
+      url: '/api/upload/' + outputFormat,
       headers: {
         'Content-Type': "text/" + inputFormat
       },
