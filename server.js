@@ -81,17 +81,21 @@ function convertFile(fileName,req,res){
   const { exec } = require('child_process');
   var outFormat = req.body.outputFormat=='pdf'?'html':req.body.outputFormat;
   var xtraParams = " ";
+  var home = process.env.HOME;
   if(outFormat=='html'){
-    if (fs.existsSync('~/.pandoc/pandoc-html-out-filter')) {
-      xtraParams = xtraParams+" --filter ~/.pandoc/pandoc-html-out-filter ";
+    var filter = home+'/.pandoc/pandoc-html-out-filter';
+    if (fs.existsSync(filter)) {
+      xtraParams = xtraParams+" --filter "+filter+" ";
     }
-    if (fs.existsSync('~/.pandoc/pandoc.css')) {
-      xtraParams = xtraParams+" --filter ~/.pandoc/pandoc.css ";
+    filter = home+'/.pandoc/pandoc.css';
+    if (fs.existsSync(filter)) {
+      xtraParams = xtraParams+" --css "+filter+"  ";
     }
   }
   if(outFormat=='docx'){
-    if (fs.existsSync('~/.pandoc/pandoc-docx-out-filter')) {
-      xtraParams = xtraParams+" --filter ~/.pandoc/pandoc-docx-out-filter ";
+    var filter = home+'/.pandoc/pandoc-docx-out-filter';
+    if (fs.existsSync(filter)) {
+      xtraParams = xtraParams+" --filter "+filter+" ";
     }
   }
   exec('pandoc '+fileName + '.'+req.body.inputFormat+' --to='+outFormat+' --output='+fileName+"."+req.body.outputFormat+xtraParams, (err, stdout, stderr) => {
