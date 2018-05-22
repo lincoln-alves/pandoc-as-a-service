@@ -1,6 +1,14 @@
 # Pandoc As A Service
 If you need to convert text from one markup format into another, pandoc is your swiss-army knife.
 
+# API
+POST /api/convert
+
+{
+	"content":"<BASE 64 ENCODED CONTENT>",	
+	"inputFormat":"docx|INPUT FORMAT",
+	"outputFormat":"pdf| OUTPUT FORMAT"
+}
 ## Overview
 
 Basically I wrapped [Pandoc](http://pandoc.org/) in a web service.
